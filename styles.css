@@ -1,0 +1,22 @@
+body {
+    text-align: center;
+}
+
+button {
+    margin: 2px;
+}
+
+textarea {
+    resize: none;
+    caret-color: transparent;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    border-color: black;
+    width: 200px;
+    height: 200px;
+}
+
+textarea:focus {
+    outline: none;
+}
