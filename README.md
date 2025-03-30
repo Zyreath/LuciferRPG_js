@@ -21,6 +21,7 @@ Current Tasks
 Variables
 
 characterName
+characterLevel
 currentHealth
 maxHealth = 15
 attackValue = 3

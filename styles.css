@@ -1,4 +1,5 @@
 body {
+    background-color: crimson;;
     text-align: center;
 }
 
@@ -13,8 +14,8 @@ textarea {
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
     border-color: black;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 150px;
 }
 
 textarea:focus {
