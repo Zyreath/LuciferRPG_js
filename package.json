@@ -1,0 +1,17 @@
+{
+    "name": "lucifer",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "test": "jest"
+    },
+    "dependencies": {
+        "babel": "^6.23.0"
+    },
+    "devDependencies": {
+        "@babel/plugin-transform-modules-commonjs": "^7.26.3",
+        "@babel/preset-env": "^7.26.9",
+        "babel-jest": "^29.7.0"
+    }
+}

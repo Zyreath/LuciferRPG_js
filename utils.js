@@ -11,5 +11,9 @@ export function dBreak() {
 }
 
 export function randomNumber() {
-    return Math.floor(Math.random() * 100);
+    let num;
+    do {
+        num = Math.floor(Math.random() * 100) + 1;
+    } while (num === 0); // This condition is now redundant but kept for clarity.
+    return num;
 }

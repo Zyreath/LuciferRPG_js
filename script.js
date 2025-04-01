@@ -4,7 +4,7 @@ const characterName = prompt("LuciferRPG 2025! Please enter your character's nam
 
 let characterLevel = 1;
 
-let currentHealth = 15;
+let currentHealth = 2;
 let maxHealth = 15;
 
 let attackValue = 3;
@@ -19,9 +19,6 @@ headingText.innerText = 'Lucifer';
 const subheading = document.createElement("h2");
 const textNode = document.createTextNode("A Diablo-style RPG: Text Version");
 document.body.appendChild(subheading.appendChild(textNode));
-
-dBreak();
-addBreak()
 
 const characterHeading = document.createElement("h3");
 characterHeading.innerText = 'Character Sheet';
@@ -82,11 +79,17 @@ document.body.appendChild(optionsHeading);
 const rollButton = document.createElement("button");
 rollButton.addEventListener('click', () => {
     let rollValue = randomNumber();
+    if (rollValue == 0) {
+        while (rollValue == 0) {
+            rollValue = randomNumber();
+        }
+    }
+
     const events = [
         {
             range: [1, 5],
             action: () => {
-                textOutput.innerText += "You found a hidden spring. Gain 10+ hp.";
+                textOutput.value += "You find a hidden spring. Gain +10 hp.\n\n";
                 currentHealth += 10;
                 if (currentHealth > maxHealth) {
                     currentHealth = maxHealth;
@@ -97,20 +100,20 @@ rollButton.addEventListener('click', () => {
         {
             range: [6, 30],
             action: () => {
-                textOutput.innerText += "You ran into a fearsome monster.";
+                textOutput.value += "You run into a fearsome monster.\n\n";
                 // Add monster encounter logic here
             }
         },
         {
             range: [31, 50],
             action: () => {
-                textOutput.innerText += "You walk for quite a while, but nothing happens.";
+                textOutput.value += "You walk for quite a while, but nothing happens.\n\n";
             }
         },
         {
             range: [51, 75],
             action: () => {
-                textOutput.innerText += "You found a potion and add it to your bag.";
+                textOutput.value += "You find a potion and add it to your bag.\n\n";
                 potionCount += 1;
                 potionslbl.innerText = `Potions: ${potionCount}`;
             }
@@ -118,7 +121,7 @@ rollButton.addEventListener('click', () => {
         {
             range: [76, 100],
             action: () => {
-                textOutput.innerText += "You find some gold.";
+                textOutput.value += "You find some gold.\n\n";
                 // Add logic for finding gold here
             }
         }
@@ -135,7 +138,7 @@ rollButton.addEventListener('click', () => {
     }
 
     if (!eventTriggered) {
-        textOutput.innerText += `${rollValue}: Error during roll. Event not found!`;
+        textOutput.value += `${rollValue}: Error during roll. Event not found!\n\n`;
     }
 });
 rollButton.innerText = 'Roll';
@@ -153,17 +156,15 @@ potionButton.addEventListener('click', () => {
         potionCount -= 1;
         characterHealthLbl.innerText = `Health: ${maxHealth} \\ ${currentHealth}`;
         potionslbl.innerText = `Potions: ${potionCount}`;
-        textOutput.innerText += `You used a healing potion. You have ${potionCount} left.`;
+        textOutput.value += `You used a healing potion. You have ${potionCount} left.\n\n`;
     } else if (currentHealth == maxHealth) {
-        textOutput.innerText += "You are already at full health!";
+        textOutput.value += "You are already at full health!\n\n";
     } else {
-        textOutput.innerText += "You don\'t have any potions left!";
+        textOutput.value += "You don\'t have any potions left!\n\n";
     }
 });
 potionButton.innerText = 'Use Potion';
 document.body.appendChild(potionButton);
-
-dBreak();
 
 let outputHistory = [];
 
@@ -174,7 +175,8 @@ document.body.appendChild(controlsHeading);
 const clearHistoryBtn = document.createElement("button");
 clearHistoryBtn.addEventListener('click', () => {
     outputHistory = [];
-    textOutput.innerText += "History succesfully cleared.";
+    textOutput.value = '';
+    textOutput.value += "History has been succesfully cleared.\n\n";
 });
 clearHistoryBtn.innerText = 'Clear History';
 document.body.appendChild(clearHistoryBtn);
